@@ -1,40 +1,97 @@
+let runApp = function () {
+    let d = new Date();
 
-let d = new Date();
+    let displayTime = document.getElementById("time")
+    let displayDate = document.getElementById("date")
 
-const day = d.getDay()
-const month = d.getMonth()
-const numDate = d.getDate()
-const year = d.getFullYear()
-const time = d.toLocaleTimeString()
+    const hour = d.getHours()
+    const minute = d.getMinutes()
+    const second = d.getSeconds()
 
-const days = {
-    0: "Sunday",
-    1: "Monday",
-    2: "Tuesday",
-    3: "Wednesday",
-    4: "Thursday",
-    5: "Friday",
-    6: "Saturday",
+    displayTime.textContent =
+        (`${hour}:${minute}:${second}`)
+
+    const day = d.getDay()
+    const month = d.getMonth()
+    const numDate = d.getDate()
+    const year = d.getFullYear()
+
+    displayDate.textContent =
+        (`${day}, ${month} ${numDate} ${year}`)
 }
 
-const months = {
-    0: "January",
-    1: "February",
-    2: "March",
-    3: "April",
-    4: "May",
-    5: "June",
-    6: "July",
-    7: "August",
-    8: "September",
-    9: "October",
-    10: "November",
-    11: "December"
+function daySuffix(date) {
+    if (date === 1 || date === 21 || date === 31) {
+        console.log(date + "st")
+    }
+    else if (date === 2 || date === 22) {
+        console.log(date + "nd")
+    }
+    else if (date === 3 || date === 23) {
+        console.log(date + "rd")
+    }
+    else {
+        console.log(date + "th")
+    }
+
 }
 
-let displayTime = document.getElementById("time").innerHTML =
-    (`${time}`)
+function daysOfTheWeek(day) {
+    if (day === 0) {
+        console.log('January')
+    }
+    else if (day === 1) {
+        console.log('February')
+    }
+    else if (day === 2) {
+        console.log('March')
+    }
+    else if (day === 3) {
+        console.log('April')
+    }
+    else if (day === 4) {
+        console.log('May')
+    }
+    else if (day === 5) {
+        console.log('June')
+    }
+    else if (day === 6) {
+        console.log('July')
+    }
+    else if (month === 7) {
+        console.log('August')
+    }
+    else if (month === 8) {
+        console.log('September')
+    }
+    else if (month === 9) {
+        console.log('October')
+    }
+    else if (month === 10) {
+        console.log('November')
+    }
+    else if (month === 11) {
+        console.log('December')
+    }
+}
 
-document.getElementById("date").innerHTML =
-    (`${days[day]}, ${months[month]} ${numDate} ${year}`)
+function prefixZero(time) {
+    if (time < 10) {
+        console.log("0" + time)
+    }
+    else {
+        console.log("time")
+    }
+}
 
+function standardTime(hour) {
+    if (hour > 12) {
+        console.log(hour - 12)
+    }
+    else {
+        console.log(hour)
+    }
+}
+
+runApp()
+setInterval(runApp, 1000)
