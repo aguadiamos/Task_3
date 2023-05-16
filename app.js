@@ -4,16 +4,16 @@ let runApp = function () {
     let displayTime = document.getElementById("time")
     let displayDate = document.getElementById("date")
 
-    const hour = d.getHours()
-    const minute = d.getMinutes()
-    const second = d.getSeconds()
+    const hour = prefixZero(standardTime(d.getHours()))
+    const minute = prefixZero(d.getMinutes())
+    const second = prefixZero(d.getSeconds())
 
     displayTime.textContent =
         (`${hour}:${minute}:${second}`)
 
-    const day = d.getDay()
-    const month = d.getMonth()
-    const numDate = d.getDate()
+    const day = daysOfTheWeek(d.getDay())
+    const month = monthsOfTheYear(d.getMonth())
+    const numDate = daySuffix(d.getDate())
     const year = d.getFullYear()
 
     displayDate.textContent =
@@ -22,74 +22,98 @@ let runApp = function () {
 
 function daySuffix(date) {
     if (date === 1 || date === 21 || date === 31) {
-        console.log(date + "st")
+        return `${date}st`
     }
     else if (date === 2 || date === 22) {
-        console.log(date + "nd")
+        return `${date}nd`
     }
     else if (date === 3 || date === 23) {
-        console.log(date + "rd")
+        return `${date}rd`
     }
     else {
-        console.log(date + "th")
+        return `${date}th`
     }
 
 }
 
-function daysOfTheWeek(day) {
+function monthsOfTheYear(day) {
     if (day === 0) {
-        console.log('January')
+        return "January"
     }
     else if (day === 1) {
-        console.log('February')
+        return "February"
     }
     else if (day === 2) {
-        console.log('March')
+        return "March"
     }
     else if (day === 3) {
-        console.log('April')
+        return "April"
     }
     else if (day === 4) {
-        console.log('May')
+        return "May"
     }
     else if (day === 5) {
-        console.log('June')
+        return "June"
     }
     else if (day === 6) {
-        console.log('July')
+        return "July"
     }
     else if (month === 7) {
-        console.log('August')
+        return "August"
     }
     else if (month === 8) {
-        console.log('September')
+        return "September"
     }
     else if (month === 9) {
-        console.log('October')
+        return "October"
     }
     else if (month === 10) {
-        console.log('November')
+        return "November"
     }
     else if (month === 11) {
-        console.log('December')
+        return "December"
+    }
+}
+
+function daysOfTheWeek(day) {
+    if (day === 0) {
+        return "Sunday"
+    }
+    if (day === 1) {
+        return "Monday"
+    }
+    if (day === 2) {
+        return "Tuesday"
+    }
+    if (day === 3) {
+        return "Wednesday"
+    }
+    if (day === 4) {
+        return "Thursday"
+    }
+    if (day === 5) {
+        return "Friday"
+    }
+    if (day === 6) {
+        return "Saturday"
     }
 }
 
 function prefixZero(time) {
     if (time < 10) {
-        console.log("0" + time)
+        return `0${time}`
     }
     else {
-        console.log("time")
+        return time
     }
 }
 
 function standardTime(hour) {
     if (hour > 12) {
-        console.log(hour - 12)
+        return hour - 12
     }
     else {
-        console.log(hour)
+        return hour
     }
 }
 
